@@ -103,7 +103,7 @@
     <div class="tp-contact-map-wrapper p-relative">
         <div class="tp-contact-map-icon-box">
             <div class="tp-contact-map-icon">
-                <span><img src="{% static 'web/assets/img/contact/map-icon.svg" alt=""></span>
+                <span><img src="{% static 'web/assets/img/contact/map-icon.svg' %}" alt=""></span>
             </div>
         </div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193596.26002818075!2d-74.1443121872927!3d40.69728463485858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1745055504744!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -134,32 +134,39 @@
             </div>
             <div class="col-lg-6">
                 <div class="tp-contact-form-wrap">
-                    <form id="contact-form" action="https://html.aqlova.com/bigbrand-landing/bigbrand/{% static 'web/assets/mail.php" method="POST">
+                    <form class="ajax reload" action="#" method="post">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="tp-contact-form-input mb-20">
-                                    <label>Full name*</label>
-                                    <input name="name" type="text">
+                                    {{ form.name.label_tag }}
+                                    {{form.name}}
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="tp-contact-form-input mb-20">
-                                    <label>Email address*</label>
-                                    <input name="email" type="email">
+                                    {{ form.email.label_tag }}
+                                    {{form.email}}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="tp-contact-form-input mb-20">
+                                    {{ form.phone.label_tag }}
+                                    {{form.phone}}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="tp-contact-form-input mb-20">
+                                    {{ form.subject.label_tag }}
+                                    {{form.subject}}
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="tp-contact-form-input mb-20">
-                                    <label>Website link</label>
-                                    <input name="subject" type="text">
+                                    {{ form.message.label_tag }}
+                                    {{form.message}}
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="tp-contact-form-input mb-20">
-                                    <label>How Can We Help You*
-                                    </label>
-                                    <textarea name="message"></textarea>
-                                </div>
+                                <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}"></div>
                                 <div class="tp-contact-form-btn">
                                     <button class="w-100" type="submit">
                                         <span>
@@ -190,7 +197,7 @@
                     <div class="col-xl-7">
                         <div class="tp-contact-location-left d-flex flex-wrap align-items-center">
                             <div class="tp-contact-location-info-thumb">
-                                <img src="{% static 'web/assets/img/contact/contact-location-1.jpg" alt="">
+                                <img src="{% static 'web/assets/img/contact/contact-location-1.jpg' %}" alt="">
                             </div>
                             <div class="tp-contact-location-left-info">
                                 <h4 class="tp-contact-location-left-title">France</h4>
@@ -225,7 +232,7 @@
                     <div class="col-xl-7">
                         <div class="tp-contact-location-left d-flex flex-wrap align-items-center">
                             <div class="tp-contact-location-info-thumb">
-                                <img src="{% static 'web/assets/img/contact/contact-location-2.jpg" alt="">
+                                <img src="{% static 'web/assets/img/contact/contact-location-2.jpg' %}" alt="">
                             </div>
                             <div class="tp-contact-location-left-info">
                                 <h4 class="tp-contact-location-left-title">Germany</h4>
@@ -262,7 +269,7 @@
                     <div class="col-xl-7">
                         <div class="tp-contact-location-left d-flex flex-wrap align-items-center">
                             <div class="tp-contact-location-info-thumb">
-                                <img src="{% static 'web/assets/img/contact/contact-location-3.jpg" alt="">
+                                <img src="{% static 'web/assets/img/contact/contact-location-3.jpg' %}" alt="">
                             </div>
                             <div class="tp-contact-location-left-info">
                                 <h4 class="tp-contact-location-left-title">New Zealand</h4>

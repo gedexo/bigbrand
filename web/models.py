@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.urls import reverse_lazy
 
 
 class Contact(models.Model):
@@ -9,7 +10,7 @@ class Contact(models.Model):
     subject = models.CharField(max_length=200)
     message = models.TextField()
 
-    def str(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -26,8 +27,12 @@ class Blog(models.Model):
     author = models.CharField(max_length=100, default='Administrator')
     description = HTMLField()
 
-    def str(self):
+    def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy("web:blog_detail", kwargs={"slug": self.slug})
+    
 
     class Meta:
         ordering = ['-date']
@@ -38,7 +43,7 @@ class Blog(models.Model):
 class ProjectCategory(models.Model):
     name = models.CharField(max_length=100)
 
-    def str(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -47,28 +52,44 @@ class ProjectCategory(models.Model):
 
 
 class Project(models.Model):
-    category = models.ForeignKey("web.ProjectCategory", on_delete=models.CASCADE)
+    category = models.ForeignKey("web.ProjectCategory", on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='project_images')
+    client = models.CharField(max_length=100, blank=True, null=True)
+    date = models.DateField(null=True)
+    project_url = models.URLField(blank=True, null=True)
     description = HTMLField()
 
-    def str(self):
+    def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse_lazy("web:project_detail", kwargs={"slug": self.slug})
+
+    def get_images(self):
+        return ProjectImage.objects.filter(project=self).order_by('order_id')
+
+    def get_image_classes(self):
+        pattern = ["col-lg-12", "col-lg-6", "col-lg-6", "col-lg-4", "col-lg-4", "col-lg-4"]
+        return [(img, pattern[i % len(pattern)]) for i, img in enumerate(self.get_images())]
+
     class Meta:
+        ordering = ['-id']
         verbose_name = 'Project'
         verbose_name_plural = 'Projects'
 
     
 class ProjectImage(models.Model):
+    order_id = models.PositiveIntegerField()
     project = models.ForeignKey("web.Project", on_delete=models.CASCADE)
     image = models.ImageField(upload_to='project_images')
 
-    def str(self):
+    def __str__(self):
         return self.project.name
 
     class Meta:
+        ordering = ['order_id']
         verbose_name = 'Project Image'
         verbose_name_plural = 'Project Images'
 
@@ -79,7 +100,7 @@ class Service(models.Model):
     image = models.ImageField(upload_to='service_images')
     description = HTMLField()
 
-    def str(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -93,7 +114,7 @@ class Testimonial(models.Model):
     image = models.ImageField(upload_to='testimonial_images')
     content = models.TextField()
 
-    def str(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -105,7 +126,7 @@ class ClientLogo(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='client_images')
 
-    def str(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -118,11 +139,34 @@ class HeroBanner(models.Model):
     subtitle = models.CharField(max_length=100)
     image = models.ImageField(upload_to='hero_images')
 
-    def str(self):
+    def __str__(self):
         return self.title
 
     class Meta:
         verbose_name = 'Hero Banner'
         verbose_name_plural = 'Hero Banners'
 
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=200)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
+
+    class Meta:
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
+
     
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='team_images')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Team'
+        verbose_name_plural = 'Teams'
