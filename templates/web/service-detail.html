@@ -1,0 +1,130 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+<div class="bigbrand-light">
+    <!-- about area start -->
+    <div class="pp-about-area pp-service-details-ptb p-relative pb-50">
+        <div class="pp-about-shape">
+            <img data-speed=".8" src="{% static 'web/assets/img/home-14/about/about-shape.png' %}" alt="">
+        </div>
+        <div class="pp-service-shape service-details-shape">
+            <img data-speed="1.1" src="{% static 'web/assets/img/home-14/about/about-shape-2.png' %}" alt="">
+        </div>
+        <div class="pp-service-details-top pb-50">
+            <div class="container container-1230">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pp-service-details-heading pb-55 tp_fade_anim" data-delay=".3">
+                            <h3 class="pp-service-details-title">
+                                {{service.title}} <span>{{service.name}} <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none">
+                                        <path d="M1.95047 15.9635C0.349769 15.5874 0.171812 13.4796 1.68557 12.8255L1.93099 12.7195C6.64382 10.6828 10.2834 6.75878 11.9603 1.90627C12.481 0.397291 14.6914 0.346013 15.2509 1.82979L21.2703 17.8126C21.3776 18.0967 21.4017 18.4043 21.34 18.7025C21.2783 19.0007 21.133 19.2781 20.9199 19.5049C20.7068 19.7317 20.4338 19.8993 20.1304 19.9897C19.827 20.0801 19.5047 20.0898 19.198 20.0178L1.95047 15.9635Z" fill="#FFF669" />
+                                    </svg></span>
+                                    <i><svg xmlns="http://www.w3.org/2000/svg" width="123" height="130" viewBox="0 0 123 130" fill="none">
+                                        <path d="M58.2803 1.15449C63.3023 14.3017 71.049 54.3533 48.1082 67.0973C36.1831 73.4283 11.7107 77.3064 2.37778 43.9355C-1.14293 31.3468 9.61622 20.8908 32.0893 28.8395C45.055 33.4255 76.4207 44.0467 90.5787 70.0771C98.0511 83.8154 104.166 111.84 99.1745 129.671M99.1745 129.671C100.942 121.014 108.128 104.495 122.737 107.673M99.1745 129.671C100.181 123.978 97.0522 110.014 76.485 99.698M75.3644 33.2431C80.479 35.6688 96.6446 46.4742 101.81 64.2891" stroke="black" stroke-width="1.5" />
+                                    </svg></i> <br>
+                                 
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about area end -->
+
+
+    <!-- banner area start -->
+    <div class="tp-service-4-banner-area p-relative">
+        <div class="ar-banner-wrap ar-about-us-4">
+            <img class="w-100" src="{{service.image.url}}" alt="{{service.name}}" data-speed=".8">
+        </div>
+    </div>
+    <!-- banner area end -->
+
+
+    <!-- ovareview area start -->
+    <div class="pp-service-details-overview-ptb pt-140 pb-50">
+        <div class="container container-1230">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pp-service-details-overview-heading">
+                        <h4 class="pp-service-details-overview-title tp_fade_anim" data-delay=".3">Service Overview</h4>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="pp-service-details-overview-wrapper">
+                        <div class="pp-service-description">
+                            {{service.description|safe}}
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- ovareview area end -->
+
+    <!-- service details process area start -->
+    <div class="pp-service-details-process-ptb pt-130 pb-90" data-bg-color="#F6F6F9">
+        <div class="container container-1350">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pp-service-details-process-heading text-center pb-100 tp_fade_anim" data-delay=".3">
+                        <span class="pp-service-details-process-subtitle"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                <circle cx="5" cy="5" r="5" fill="currentColor" />
+                            </svg> Working Process</span>
+                        <h3 class="pp-service-details-process-title">Product making for <br> friendly users</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="pp-service-details-process-box z-index-1 pb-40 tp_fade_anim" data-delay=".5">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="pp-service-details-process-item text-center mb-30">
+                            <span>01</span>
+                            <h4>Research <br>
+                                And Analysis</h4>
+                            <p>Conduct user research (interviews, surveys, analytics).</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="pp-service-details-process-item text-center mb-30">
+                            <span>02</span>
+                            <h4>Design <br>
+                                And Prototyping</h4>
+                            <p>Transform wireframes into high-fidelity UI designs.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="pp-service-details-process-item text-center mb-30">
+                            <span>03</span>
+                            <h4>Testing <br>
+                                And Iteration</h4>
+                            <p>Conduct usability testing to gather user feedback.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="pp-service-details-process-item text-center mb-30">
+                            <span>04</span>
+                            <h4>Prepare for <br> Delivery</h4>
+                            <p>Track performance using analytics and user feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pp-service-details-process-bottom text-center">
+                        <span>Don’t hesitate collaborate with expertise- <a href="{% url 'web:contact' %}"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="11" viewBox="0 0 25 11" fill="none">
+                                    <path d="M18.675 10.0096L24.72 5.70942C24.806 5.64025 24.8766 5.54578 24.9255 5.43455C24.9744 5.32331 25 5.19883 25 5.07235C25 4.94587 24.9744 4.82138 24.9255 4.71015C24.8766 4.59892 24.806 4.50445 24.72 4.43528L18.675 0.135054C18.5572 0.0563568 18.4215 0.0281769 18.2892 0.0549569C18.157 0.0817369 18.0358 0.161954 17.9446 0.282961C17.8535 0.403968 17.7977 0.558882 17.7859 0.723281C17.7742 0.88768 17.8072 1.05221 17.8798 1.19094L19.633 4.335L0.598757 4.335C0.439957 4.335 0.287661 4.41268 0.175371 4.55096C0.0630817 4.68924 0 4.87679 0 5.07235C0 5.26791 0.0630817 5.45545 0.175371 5.59373C0.287661 5.73201 0.439957 5.8097 0.598757 5.8097L19.633 5.8097L17.8798 8.95376C17.8072 9.09249 17.7742 9.25702 17.7859 9.42142C17.7977 9.58582 17.8535 9.74073 17.9446 9.86174C18.0358 9.98274 18.157 10.063 18.2892 10.0897C18.4215 10.1165 18.5572 10.0883 18.675 10.0096Z" fill="currentColor" />
+                                </svg> Let’s Talk</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- service details process area end -->
+
+</div>
+{% endblock %}

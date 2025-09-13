@@ -56,8 +56,9 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='project_images')
-    client = models.CharField(max_length=100, blank=True, null=True)
-    date = models.DateField(null=True)
+    client = models.CharField(max_length=100, null=True)
+    timescale = models.CharField(max_length=100, null=True)
+    launch_date = models.DateField(null=True)
     project_url = models.URLField(blank=True, null=True)
     description = HTMLField()
 
@@ -97,11 +98,16 @@ class ProjectImage(models.Model):
 class Service(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+    title = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to='service_images')
     description = HTMLField()
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse_lazy("web:service_detail", kwargs={"slug": self.slug})
+    
 
     class Meta:
         verbose_name = 'Service'
@@ -170,3 +176,55 @@ class Team(models.Model):
     class Meta:
         verbose_name = 'Team'
         verbose_name_plural = 'Teams'
+
+    
+class Career(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    job_category = models.CharField(max_length=100, null=True)
+    experience = models.CharField(max_length=100)
+    job_type = models.CharField(max_length=100)
+    opening = models.PositiveIntegerField()
+    last_date = models.DateField()
+    location = models.CharField(max_length=100) 
+    description = HTMLField()
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy("web:career_detail", kwargs={"slug": self.slug})
+
+    class Meta:
+        verbose_name = 'Career'
+        verbose_name_plural = 'Careers'
+
+    
+class CareerEnquiry(models.Model):
+    career = models.ForeignKey("web.Career", verbose_name="Position", on_delete=models.PROTECT)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Career Enquiry'
+        verbose_name_plural = 'Career Enquiries'
+
+    
+class Gallery(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='gallery_images')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Gallery'
+        verbose_name_plural = 'Galleries'

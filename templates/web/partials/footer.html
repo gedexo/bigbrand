@@ -45,13 +45,13 @@
                     <h4 class="tp-footer-widget-title-sm pre mb-25">Quick links</h4>
                     <div class="tp-footer-widget-menu">
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Who we are</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{% url 'web:index' %}">Home</a></li>
+                            <li><a href="{% url 'web:about' %}">About</a></li>
+                            <li><a href="{% url 'web:services' %}">Services</a></li>
+                            <li><a href="{% url 'web:projects' %}">Projects</a></li>
+                            <li><a href="{% url 'web:blogs' %}">Blog</a></li>
+                            <li><a href="{% url 'web:career' %}">Career</a></li>
+                            <li><a href="{% url 'web:contact' %}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

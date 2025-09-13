@@ -51367,19 +51367,19 @@
 
 		createMultiMaterialObject: function ( /* geometry, materials */ ) {
 
-			console.error( 'THREE.SceneUtils%20has%20been%20moved%20to/examples/jsm/utils/SceneUtils.js' );
+			console.error( 'static/web/SceneUtils/examples/jsm/utils/SceneUtils.js' );
 
 		},
 
 		detach: function ( /* child, parent, scene */ ) {
 
-			console.error( 'THREE.SceneUtils%20has%20been%20moved%20to/examples/jsm/utils/SceneUtils.js' );
+			console.error( 'static/web/SceneUtils/examples/jsm/utils/SceneUtils.js' );
 
 		},
 
 		attach: function ( /* child, scene, parent */ ) {
 
-			console.error( 'THREE.SceneUtils%20has%20been%20moved%20to/examples/jsm/utils/SceneUtils.js' );
+			console.error( 'static/web/SceneUtils/examples/jsm/utils/SceneUtils.js' );
 
 		}
 

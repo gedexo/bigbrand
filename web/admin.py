@@ -49,3 +49,12 @@ class FAQAdmin(admin.ModelAdmin):
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ("name", "position")
+
+@admin.register(Career)
+class CareerAdmin(admin.ModelAdmin):
+    list_display = ("title", "job_category", "job_type", "opening", "last_date", "location")
+    prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ("name",)

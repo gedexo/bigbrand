@@ -7,29 +7,51 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 
 from .forms import ContactForm
-from .models import Blog, ProjectCategory, Project, ClientLogo
+from .models import Blog, ProjectCategory, Project, ClientLogo, Service, FAQ, Testimonial, Career, Gallery, Team
 
 
 def index(request):
-
+    service = Service.objects.all()
+    projects = Project.objects.all()[:6]
+    testimonials = Testimonial.objects.all()
     context = {
-        "is_home": True
+        "is_home": True,
+        "services": service,
+        "projects": projects,
+        "testimonials": testimonials
     }
     return render(request, 'web/index.html', context)
 
 
 def about(request):
+    services = Service.objects.all()
+    faqs = FAQ.objects.all()    
+    testimonials = Testimonial.objects.all()
+    teams = Team.objects.all()
     context = {
-        "is_about": True
+        "is_about": True,
+        "services": services,
+        "faqs": faqs,
+        "testimonials": testimonials,
+        "teams": teams
     }
     return render(request, 'web/about.html', context)
 
 def service(request):
+    services = Service.objects.all()
     context = {
-        "is_service": True
+        "is_service": True,
+        "services": services
     }
     return render(request, 'web/service.html', context)
 
+
+def service_detail(request, slug):
+    context = {
+        "is_service": True,
+        "service": get_object_or_404(Service, slug=slug)
+    }
+    return render(request, "web/service-detail.html", context)
 
 def project(request):
     project_categories = ProjectCategory.objects.all()
@@ -46,11 +68,16 @@ def project(request):
 
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
+    
+    # Get next and previous projects
     next_project = Project.objects.filter(id__gt=project.id).order_by("id").first()
+    prev_project = Project.objects.filter(id__lt=project.id).order_by("-id").first()
+    
     context = {
         "is_project": True,
         "project": project,
-        "next_project": next_project
+        "next_project": next_project,
+        "prev_project": prev_project
     }
     return render(request, "web/project-detail.html", context)
 
@@ -83,6 +110,24 @@ def blog_detail(request, slug):
         "next_blog": next_blog,
     }
     return render(request, "web/blog-detail.html", context)
+
+
+def career(request):
+    galleries = Gallery.objects.all()
+    context = {
+        "is_career": True,
+        "careers": Career.objects.all(),
+        "galleries": galleries
+    }
+    return render(request, "web/career.html", context)   
+
+
+def career_detail(request, slug):   
+    context = {
+        "is_career": True,
+        "career": get_object_or_404(Career, slug=slug)
+    }
+    return render(request, "web/career-detail.html", context)
 
 
 def contact(request):

@@ -1,0 +1,25 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+<div class="bigbrand-light">
+    <!-- error area start -->
+    <div class="tp-error-area pt-190 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="tp-error-wrapper text-center">
+                        <h4 class="tp-error-title">Oops!</h4>
+                        <img src="assets/img/error/error.png" alt="">
+                        <div class="tp-error-content">
+                            <h4 class="tp-error-title-sm">Something went Wrong...</h4>
+                            <p>Sorry, we couldn't find your page.</p>
+                            <a class="tp-btn" href="index.html">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- error area end -->
+</div>
+{% endblock %}

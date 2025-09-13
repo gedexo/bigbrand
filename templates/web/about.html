@@ -1,7 +1,7 @@
 {% extends 'web/base.html' %}
 {% load static %}
 {% block content %}
-<div>
+<div class="bigbrand-light">
     <!-- hero area start -->
     <div class="ar-hero-area p-relative" data-background="{% static 'web/assets/img/about-us/about-us-4/about-us-4-bg.png' %}">
         <div class="ar-about-us-4-shape">
@@ -165,7 +165,7 @@
                 <div class="col-xl-3 col-lg-5">
                     <div class="creative-service-top-content">
                         <p>We are a digital marketing agency with expertise, and we’re on a mission to help you take the next step in your business.</p>
-                        <a href="blog-grid-2-col-light.html" class="tp-btn-black btn-red-bg pr-15">
+                        <a href="{% url 'web:services' %}" class="tp-btn-black btn-red-bg pr-15">
                             <span class="tp-btn-black-filter-blur">
                                 <svg width="0" height="0">
                                     <defs>
@@ -179,7 +179,7 @@
                                 </svg>
                             </span>
                             <span class="tp-btn-black-filter d-inline-flex align-items-center" style="filter: url(#buttonFilter5)">
-                                <span class="tp-btn-black-text">See all Articles</span>
+                                <span class="tp-btn-black-text">See all Services</span>
                                 <span class="tp-btn-black-circle">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -193,22 +193,16 @@
             <div class="creative-service-wrap">
                 <div class="row">
                     <div class="offset-xl-3 col-xl-9">
+                        {% for service in services %}
                         <div class="creative-service-item about-us-4 d-flex align-items-start justify-content-between tp_fade_anim">
                             <div class="creative-service-content d-flex align-items-start">
-                                <span>(01)</span>
+                                <span>({{forloop.counter|stringformat:"02d"}})</span>
                                 <div class="creative-service-title-info">
-                                    <h4 class="creative-service-title"><a href="service-details-light.html">Branding</a></h4>
-                                    <div class="creative-service-category">
-                                        <span>Logo design</span>
-                                        <span>Brand Guidelines</span>
-                                        <span>Visual Identity</span>
-                                        <span>Custom Emails</span>
-                                        <span>Presentations</span>
-                                    </div>
+                                    <h4 class="creative-service-title"><a href="{{service.get_absolute_url}}">{{service.name}}</a></h4>
                                 </div>
                             </div>
                             <div class="creative-service-link">
-                                <a href="service-details-light.html">
+                                <a href="{{service.get_absolute_url}}">
                                     <span>
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -217,54 +211,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="creative-service-item about-us-4 d-flex align-items-start justify-content-between tp_fade_anim">
-                            <div class="creative-service-content d-flex align-items-start">
-                                <span>(02)</span>
-                                <div class="creative-service-title-info">
-                                    <h4 class="creative-service-title"><a href="service-details-light.html">Identity</a></h4>
-                                    <div class="creative-service-category">
-                                        <span>Logo design</span>
-                                        <span>Brand Guidelines</span>
-                                        <span>Visual Identity</span>
-                                        <span>Custom Emails</span>
-                                        <span>Presentations</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="creative-service-link">
-                                <a href="service-details-light.html">
-                                    <span>
-                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="creative-service-item about-us-4 d-flex align-items-start justify-content-between tp_fade_anim">
-                            <div class="creative-service-content d-flex align-items-start">
-                                <span>(03)</span>
-                                <div class="creative-service-title-info">
-                                    <h4 class="creative-service-title"><a href="service-details-light.html">Impact</a></h4>
-                                    <div class="creative-service-category">
-                                        <span>Logo design</span>
-                                        <span>Brand Guidelines</span>
-                                        <span>Visual Identity</span>
-                                        <span>Custom Emails</span>
-                                        <span>Presentations</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="creative-service-link">
-                                <a href="service-details-light.html">
-                                    <span>
-                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -624,7 +571,7 @@
     <!-- work area end -->
 
     <!-- testimonial area start -->
-    <div class="tp-testimonial-area tp-team-bg black-bg-3 p-relative fix" data-background="{% static 'web/assets/img/home-01/testimonial/noise.png' %}">
+    <div class="tp-testimonial-area tp-team-bg black-bg-3 p-relative fix mt-50" data-background="{% static 'web/assets/img/home-01/testimonial/noise.png' %}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6">
@@ -640,207 +587,164 @@
         <div class="tp-team-slider-wrap">
             <div class="tp-team-slider-active swiper-container">
                 <div class="swiper-wrapper slide-transtion">
+                    {% for team in teams %}
                     <div class="swiper-slide">
                         <div class="tp-team-item">
                             <div class="tp-team-item-thumb">
-                                <a href="team-details-light.html"><img src="{% static 'web/assets/img/about-us/about-us-4/team/team-1.jpg' %}" alt=""></a>
+                                <a><img src="{{team.image.url}}" alt="{{team.name}}"></a>
                                 <div class="studio-team-content text-center">
-                                    <h4 class="studio-team-title-sm"><a href="team-details-light.html">Andrew</a></h4>
-                                    <span>Developer</span>
+                                    <h4 class="studio-team-title-sm"><a>{{team.name}}</a></h4>
+                                    <span>{{team.position}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tp-team-item">
-                            <div class="tp-team-item-thumb">
-                                <a href="team-details-light.html"><img src="{% static 'web/assets/img/about-us/about-us-4/team/team-2.jpg' %}" alt=""></a>
-                                <div class="studio-team-content text-center">
-                                    <h4 class="studio-team-title-sm"><a href="team-details-light.html">Sophia</a></h4>
-                                    <span>Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tp-team-item">
-                            <div class="tp-team-item-thumb">
-                                <a href="team-details-light.html"><img src="{% static 'web/assets/img/about-us/about-us-4/team/team-3.jpg' %}" alt=""></a>
-                                <div class="studio-team-content text-center">
-                                    <h4 class="studio-team-title-sm"><a href="team-details-light.html">Emma</a></h4>
-                                    <span>Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tp-team-item">
-                            <div class="tp-team-item-thumb">
-                                <a href="team-details-light.html"><img src="{% static 'web/assets/img/about-us/about-us-4/team/team-4.jpg' %}" alt=""></a>
-                                <div class="studio-team-content text-center">
-                                    <h4 class="studio-team-title-sm"><a href="team-details-light.html">James</a></h4>
-                                    <span>Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tp-team-item">
-                            <div class="tp-team-item-thumb">
-                                <a href="team-details-light.html"><img src="{% static 'web/assets/img/about-us/about-us-4/team/team-5.jpg' %}" alt=""></a>
-                                <div class="studio-team-content text-center">
-                                    <h4 class="studio-team-title-sm"><a href="team-details-light.html">Oliver</a></h4>
-                                    <span>Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
     <!-- testimonial area end -->
 
-    <!-- award area start -->
-    <div class="tp-award-area tp-award-bg black-bg-3" data-background="{% static 'web/assets/img/home-01/testimonial/noise.png' %}">
-        <div class="container container-1230">
-            <div class="row">
+    <!-- brand area start -->
+    <div class="des-brand-aread des-testimonial-slide-area pb-50 pt-50">
+        <div class="container container-1510">
+            <div class="row justify-content-center">
                 <div class="col-xl-12">
-                    <div class="tp-award-subtitle-box mb-30">
-                        <span class="tp-award-subtitle">( Awards! )</span>
-                    </div>
-                </div>
-                <div class="tp-award-item-wrap p-relative">
-                    <div class="tp-award-item hover-reveal-item p-relative mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <div class="tp-award-box-left z-index-3">
-                                    <span class="tp-award-year">2008</span>
-                                    <span class="tp-award-text">1x agency of the year</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tp-award-box-right z-index-3 d-flex justify-content-between align-items-center">
-                                    <span class="tp-award-position">Winner</span>
-                                    <span class="tp-award-icon">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
+                    <div class="ar-hero-title-box tp_fade_anim" data-delay=".3">
+                        <div class="ar-about-us-4-title-box d-flex align-items-center mb-20">
+                            <span class="tp-section-subtitle pre tp_fade_anim">Testimonials</span>
+                            <div class="ar-about-us-4-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="81" height="9" viewBox="0 0 81 9" fill="none">
+                                    <rect y="4" width="80" height="1" fill="#111013" />
+                                    <path d="M77 7.96366L80.5 4.48183L77 1" stroke="#111013" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
                             </div>
                         </div>
-                        <div class="tp-award-reveal-img" data-background="{% static 'web/assets/img/home-01/award/award-1.jpg' %}"></div>
-                    </div>
-                    <div class="tp-award-item hover-reveal-item p-relative mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <div class="tp-award-box-left z-index-3">
-                                    <span class="tp-award-year">2009</span>
-                                    <span class="tp-award-text">3x creative agency of the day</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tp-award-box-right z-index-3 d-flex justify-content-between align-items-center">
-                                    <span class="tp-award-position">Awarded</span>
-                                    <span class="tp-award-icon">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tp-award-reveal-img" data-background="{% static 'web/assets/img/home-01/award/award-2.jpg' %}"></div>
-                    </div>
-                    <div class="tp-award-item hover-reveal-item p-relative mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <div class="tp-award-box-left z-index-3">
-                                    <span class="tp-award-year">2011</span>
-                                    <span class="tp-award-text">2x Featured design of the week</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tp-award-box-right z-index-3 d-flex justify-content-between align-items-center">
-                                    <span class="tp-award-position">Mentioned</span>
-                                    <span class="tp-award-icon">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tp-award-reveal-img" data-background="{% static 'web/assets/img/home-01/award/award-3.jpg' %}"></div>
-                    </div>
-                    <div class="tp-award-item hover-reveal-item p-relative mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <div class="tp-award-box-left z-index-3">
-                                    <span class="tp-award-year">2016</span>
-                                    <span class="tp-award-text">5x honorable mentioned</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tp-award-box-right z-index-3 d-flex justify-content-between align-items-center">
-                                    <span class="tp-award-position">Mentioned</span>
-                                    <span class="tp-award-icon">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tp-award-reveal-img" data-background="{% static 'web/assets/img/home-01/award/award-4.jpg' %}"></div>
-                    </div>
-                    <div class="tp-award-item hover-reveal-item p-relative mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <div class="tp-award-box-left z-index-3">
-                                    <span class="tp-award-year">2022</span>
-                                    <span class="tp-award-text">8x Best design of the day</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tp-award-box-right z-index-3 d-flex justify-content-between align-items-center">
-                                    <span class="tp-award-position">Winner</span>
-                                    <span class="tp-award-icon">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tp-award-reveal-img" data-background="{% static 'web/assets/img/home-01/award/award-5.jpg' %}"></div>
-                    </div>
-                    <div class="tp-award-item hover-reveal-item p-relative mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <div class="tp-award-box-left z-index-3">
-                                    <span class="tp-award-year">2025</span>
-                                    <span class="tp-award-text">3x Mobile Excellence Award</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tp-award-box-right z-index-3 d-flex justify-content-between align-items-center">
-                                    <span class="tp-award-position">Awarded</span>
-                                    <span class="tp-award-icon">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tp-award-reveal-img" data-background="{% static 'web/assets/img/home-01/award/award-6.jpg' %}"></div>
+                        <h3 class="tp-career-title pb-30">Their Words, <br>Our Pride!</h3>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="des-brand-moving-wrap">
+            <div class="des-brand-moving-top moving-text pb-10">
+                <div class="des-brand-item des-testiimonial-item wrapper-text black-style d-flex align-items-center">
+                    {% for testimonial in testimonials %}
+                    <div class="des-brand-item-inner des-testimonial-item-inner card p-3" style="width: 300px;">
+                        <div class="testimonial-content mb-3">
+                            <p class="mb-0">{{testimonial.content}}</p>
+                        </div>
+                        <div class="testimonial-item-head d-flex align-items-center gap-3">
+                            <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
+                            <div>
+                                <h6 class="mb-0">{{testimonial.name}}</h6>
+                                <small class="text-muted">{{testimonial.position}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="des-brand-moving-bottom moving-text">
+                <div class="des-brand-item des-testiimonial-item wrapper-text black-style d-flex align-items-center">
+                    {% for testimonial in testimonials reversed %}
+                    <div class="des-brand-item-inner des-testimonial-item-inner card p-3" style="width: 300px;">
+                        <div class="testimonial-content mb-3">
+                            <p class="mb-0">{{testimonial.content}}</p>
+                        </div>
+                        <div class="testimonial-item-head d-flex align-items-center gap-3">
+                            <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
+                            <div>
+                                <h6 class="mb-0">{{testimonial.name}}</h6>
+                                <small class="text-muted">{{testimonial.position}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- award area end -->
+    <!-- brand area end -->
+
+    <section class="faq-section">
+        <div class="ar-hero-area p-relative" data-background="assets/img/team/team-bg.png">
+            <div class="tp-career-shape-1">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                        <path d="M36.3761 0.5993C40.3065 8.98556 47.3237 34.898 32.8824 44.3691C25.3614 49.0997 9.4871 52.826 1.7513 31.3747C-1.16691 23.2826 5.38982 15.9009 20.5227 20.0332C29.2536 22.4173 50.3517 27.8744 60.9 44.2751C66.4672 52.9311 71.833 71.0287 69.4175 82.9721M69.4175 82.9721C70.1596 77.2054 74.079 66.0171 83.8204 67.3978M69.4175 82.9721C69.8033 79.1875 67.076 70.1737 53.0797 64.3958M49.1371 20.8349C52.611 22.1801 63.742 28.4916 67.9921 39.9344" stroke="#030303" stroke-width="1.5" />
+                    </svg></span>
+            </div>
+            <div class="container container-1230">
+                <div class="ar-about-us-4-hero-ptb">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-12">
+                            <div class="ar-hero-title-box tp_fade_anim" data-delay=".3">
+                                <div class="ar-about-us-4-title-box d-flex align-items-center mb-20">
+                                    <span class="tp-section-subtitle pre tp_fade_anim">Faq</span>
+                                    <div class="ar-about-us-4-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="81" height="9" viewBox="0 0 81 9" fill="none">
+                                            <rect y="4" width="80" height="1" fill="#111013" />
+                                            <path d="M77 7.96366L80.5 4.48183L77 1" stroke="#111013" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="tp-career-title pb-30">Frequently <span class="shape-1"><img src="{% static 'web/assets/img/about-us/about-us-4/about-us-4-shape-1.png' %}" alt=""></span> <br>asked question!</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-8">
+                            <div class="tp-faq-text  tp_fade_anim">
+                                <p>Bigbrand is a beacon of best innovation and the dynamic <br> parent a company of wealcoder and many other subsidiaries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- hero area end -->
+
+        <!-- faq area start -->
+        <div class="app-faq-area p-relative">
+            <div class="container container-1230">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="app-faq-wrap faq-inner-style">
+                            <div class="ai-faq-accordion-wrap">
+                                <div class="accordion" id="accordionExample1">
+                                    {% for faq in faqs %}
+                                    <div class="accordion-items">
+                                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                                            <button class="accordion-buttons {% if not forloop.first %}collapsed{% endif %}" 
+                                                    type="button" 
+                                                    data-bs-toggle="collapse" 
+                                                    data-bs-target="#collapse{{ forloop.counter }}" 
+                                                    aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" 
+                                                    aria-controls="collapse{{ forloop.counter }}">
+                                                {{ faq.question }}
+                                                <span class="accordion-icon"></span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{ forloop.counter }}" 
+                                            class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                                            aria-labelledby="heading{{ forloop.counter }}" 
+                                            data-bs-parent="#accordionExample1">
+                                            <div class="accordion-body">
+                                                <p>{{ faq.answer }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- faq area end -->
+    </section>
+
 </div>
 {% endblock %}

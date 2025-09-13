@@ -43,4 +43,79 @@
     .tp-portfolio-details-1-thumb-1{
         height: 750px !important;
     }
+    .pp-service-details-overview-list ul li{
+        margin-right: 50px !important;
+    }
+}
+.pp-service-details-overview-heading{
+    margin-bottom: 30px !important;
+}
+.pp-service-details-overview-wrapper p{
+    margin-bottom: 25px !important;
+}
+.pp-service-description ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 20px;
+    margin: 0;
+    margin-bottom: 50px;
+    padding-top: 20px;
+}
+
+.pp-service-description ul li {
+    position: relative;
+    padding-left: 32px;
+    padding-right: 70px;
+}
+
+.pp-service-description ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px; /* adjust vertical alignment */
+  width: 22px;   /* circle size */
+  height: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* border color */
+  border-radius: 50%;     /* make it round */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; /* optional background */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='10' viewBox='0 0 11 10' fill='none'><path d='M9.50631 0.886963L4.26771 6.12552L1.49369 3.35158L0 4.84527L4.26771 9.11302L11 2.38065L9.50631 0.886963Z' fill='black'/></svg>");
+}
+/* .tp-service-area .tp-service-item.tp-service-panel{
+    height: 464.312px !important;
+} */
+/* .tp-service-content .tp-service-btn{
+    margin-bottom: 20px !important; 
+} */
+.tp-career-details-wrap .tp-career-description ul{
+    padding-left: 30px !important;
+}
+.modal {
+  z-index: 9999 !important;
+}
+
+.modal-backdrop {
+  z-index: 9998 !important;
+}
+
+.bigbrand-light .des-testimonial-slide-area .des-testiimonial-item.black-style .des-testimonial-item-inner {
+    background-color: rgb(255 255 255) !important;
+}
+
+.ar-about-us-4-hero-ptb {
+    padding-top: 100px !important;
+}
+.tp-service-content .tp-section-title{
+    margin-bottom: 25px !important;
+}
+.tp-service-item .tp-service-thumb img{
+    height: 580px !important;
+    width: 465px !important;
+    object-fit: cover !important;
+    object-position: center !important
 }
