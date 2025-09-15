@@ -113,6 +113,22 @@ class Service(models.Model):
         verbose_name = 'Service'
         verbose_name_plural = 'Services'
 
+
+class ServiceEnquiry(models.Model):
+    service = models.ForeignKey("web.Service", verbose_name="Service", on_delete=models.PROTECT)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Service Enquiry'
+        verbose_name_plural = 'Service Enquiries'
+    
     
 class Testimonial(models.Model):
     name = models.CharField(max_length=100)
@@ -205,15 +221,14 @@ class CareerEnquiry(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    subject = models.CharField(max_length=200)
+    resume = models.FileField(upload_to='resume')
     message = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
         return self.name
 
     class Meta:
-        db_table = ''
-        managed = True
         verbose_name = 'Career Enquiry'
         verbose_name_plural = 'Career Enquiries'
 

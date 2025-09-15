@@ -1,7 +1,6 @@
 {% extends 'web/base.html' %}
 {% load static %}
 {% block content %}
-<div class="bigbrand-light">
     <!-- hero area start -->
     <div class="ar-hero-area p-relative" data-background="{% static 'web/assets/img/about-us/about-us-4/about-us-4-bg.png' %}">
         <div class="ar-about-us-4-shape">
@@ -607,60 +606,62 @@
     <!-- testimonial area end -->
 
     <!-- brand area start -->
-    <div class="des-brand-aread des-testimonial-slide-area pb-50 pt-50">
-        <div class="container container-1510">
-            <div class="row justify-content-center">
-                <div class="col-xl-12">
-                    <div class="ar-hero-title-box tp_fade_anim" data-delay=".3">
-                        <div class="ar-about-us-4-title-box d-flex align-items-center mb-20">
-                            <span class="tp-section-subtitle pre tp_fade_anim">Testimonials</span>
-                            <div class="ar-about-us-4-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="81" height="9" viewBox="0 0 81 9" fill="none">
-                                    <rect y="4" width="80" height="1" fill="#111013" />
-                                    <path d="M77 7.96366L80.5 4.48183L77 1" stroke="#111013" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+    <div class="bigbrand-light">
+        <div class="des-brand-aread des-testimonial-slide-area pb-50 pt-50">
+            <div class="container container-1510">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12">
+                        <div class="ar-hero-title-box tp_fade_anim" data-delay=".3">
+                            <div class="ar-about-us-4-title-box d-flex align-items-center mb-20">
+                                <span class="tp-section-subtitle pre tp_fade_anim">Testimonials</span>
+                                <div class="ar-about-us-4-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="81" height="9" viewBox="0 0 81 9" fill="none">
+                                        <rect y="4" width="80" height="1" fill="#111013" />
+                                        <path d="M77 7.96366L80.5 4.48183L77 1" stroke="#111013" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
                             </div>
+                            <h3 class="tp-career-title pb-30">Their Words, <br>Our Pride!</h3>
                         </div>
-                        <h3 class="tp-career-title pb-30">Their Words, <br>Our Pride!</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="des-brand-moving-wrap">
-            <div class="des-brand-moving-top moving-text pb-10">
-                <div class="des-brand-item des-testiimonial-item wrapper-text black-style d-flex align-items-center">
-                    {% for testimonial in testimonials %}
-                    <div class="des-brand-item-inner des-testimonial-item-inner card p-3" style="width: 300px;">
-                        <div class="testimonial-content mb-3">
-                            <p class="mb-0">{{testimonial.content}}</p>
-                        </div>
-                        <div class="testimonial-item-head d-flex align-items-center gap-3">
-                            <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
-                            <div>
-                                <h6 class="mb-0">{{testimonial.name}}</h6>
-                                <small class="text-muted">{{testimonial.position}}</small>
+            <div class="des-brand-moving-wrap">
+                <div class="des-brand-moving-top moving-text pb-10">
+                    <div class="des-brand-item des-testiimonial-item wrapper-text black-style d-flex align-items-center">
+                        {% for testimonial in testimonials %}
+                        <div class="des-brand-item-inner des-testimonial-item-inner card p-3" style="width: 300px;">
+                            <div class="testimonial-content mb-3">
+                                <p class="mb-0">{{testimonial.content}}</p>
+                            </div>
+                            <div class="testimonial-item-head d-flex align-items-center gap-3">
+                                <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
+                                <div>
+                                    <h6 class="mb-0">{{testimonial.name}}</h6>
+                                    <small class="text-muted">{{testimonial.position}}</small>
+                                </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
-            </div>
-            <div class="des-brand-moving-bottom moving-text">
-                <div class="des-brand-item des-testiimonial-item wrapper-text black-style d-flex align-items-center">
-                    {% for testimonial in testimonials reversed %}
-                    <div class="des-brand-item-inner des-testimonial-item-inner card p-3" style="width: 300px;">
-                        <div class="testimonial-content mb-3">
-                            <p class="mb-0">{{testimonial.content}}</p>
-                        </div>
-                        <div class="testimonial-item-head d-flex align-items-center gap-3">
-                            <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
-                            <div>
-                                <h6 class="mb-0">{{testimonial.name}}</h6>
-                                <small class="text-muted">{{testimonial.position}}</small>
+                <div class="des-brand-moving-bottom moving-text">
+                    <div class="des-brand-item des-testiimonial-item wrapper-text black-style d-flex align-items-center">
+                        {% for testimonial in testimonials reversed %}
+                        <div class="des-brand-item-inner des-testimonial-item-inner card p-3" style="width: 300px;">
+                            <div class="testimonial-content mb-3">
+                                <p class="mb-0">{{testimonial.content}}</p>
+                            </div>
+                            <div class="testimonial-item-head d-flex align-items-center gap-3">
+                                <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
+                                <div>
+                                    <h6 class="mb-0">{{testimonial.name}}</h6>
+                                    <small class="text-muted">{{testimonial.position}}</small>
+                                </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -668,7 +669,7 @@
     <!-- brand area end -->
 
     <section class="faq-section">
-        <div class="ar-hero-area p-relative" data-background="assets/img/team/team-bg.png">
+        <div class="ar-hero-area p-relative" data-background="{% static 'web/assets/img/team/team-bg.png' %}">
             <div class="tp-career-shape-1">
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
                         <path d="M36.3761 0.5993C40.3065 8.98556 47.3237 34.898 32.8824 44.3691C25.3614 49.0997 9.4871 52.826 1.7513 31.3747C-1.16691 23.2826 5.38982 15.9009 20.5227 20.0332C29.2536 22.4173 50.3517 27.8744 60.9 44.2751C66.4672 52.9311 71.833 71.0287 69.4175 82.9721M69.4175 82.9721C70.1596 77.2054 74.079 66.0171 83.8204 67.3978M69.4175 82.9721C69.8033 79.1875 67.076 70.1737 53.0797 64.3958M49.1371 20.8349C52.611 22.1801 63.742 28.4916 67.9921 39.9344" stroke="#030303" stroke-width="1.5" />
@@ -746,5 +747,4 @@
         <!-- faq area end -->
     </section>
 
-</div>
 {% endblock %}

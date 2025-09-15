@@ -43,7 +43,7 @@
 
 
     <!-- ovareview area start -->
-    <div class="pp-service-details-overview-ptb pt-140 pb-50">
+    {% comment %} <div class="pp-service-details-overview-ptb pt-140 pb-50">
         <div class="container container-1230">
             <div class="row">
                 <div class="col-lg-12">
@@ -62,8 +62,96 @@
                 
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     <!-- ovareview area end -->
+
+    <!-- career details area start -->
+    <section class="pp-service-details-overview-ptb pt-120 pb-50">
+        <div class="container container-1230">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="tp-career-details-wrapper pb-40">
+                        <div class="pp-service-details-overview-heading">
+                            <h4 class="pp-service-details-overview-title tp_fade_anim" data-delay=".3">Service Overview</h4>
+                        </div>
+                        <div class="pp-service-details-overview-wrapper">
+                            <div class="pp-service-description">
+                                {{service.description|safe}}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tp-career-details-sidebar tp-service-details-sidebar">
+                        <div class="tp-career-details-sidebar-box">
+                            <div class="tp-career-details-sidebar-heading">
+                                <span>Service Enquiry</span>
+                                <h4 class="tp-career-details-sidebar-title">Fill the form below</h4>
+                            </div>
+
+                            <form id="serviceEnquiryForm" method="post" class="ajax-form ajax reload">
+                                {% csrf_token %}
+                                <!-- Hidden input for service -->
+                                <input type="hidden" name="service" value="{{ service.id }}">
+
+                                <div class="mb-3">
+                                    {{ form.name.label_tag }}
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="text-danger">{{ form.name.errors }}</div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form.email.label_tag }}
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form.phone.label_tag }}
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="text-danger">{{ form.phone.errors }}</div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form.subject.label_tag }}
+                                    {{ form.subject }}
+                                    {% if form.subject.errors %}
+                                        <div class="text-danger">{{ form.subject.errors }}</div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form.message.label_tag }}
+                                    {{ form.message }}
+                                    {% if form.message.errors %}
+                                        <div class="text-danger">{{ form.message.errors }}</div>
+                                    {% endif %}
+                                </div>
+
+                                <!-- Cloudflare Turnstile -->
+                                <div class="mb-3">
+                                    <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}"></div>
+                                </div>
+
+                                <div class="tp-career-details-sidebar-btn">
+                                    <button type="submit" class="btn w-100">Submit Enquiry</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- career details area end -->
 
     <!-- service details process area start -->
     <div class="pp-service-details-process-ptb pt-130 pb-90" data-bg-color="#F6F6F9">

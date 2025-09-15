@@ -63,6 +63,10 @@
     <!-- back to top end -->
     <!-- back to top end -->
 
+    {% block modal_content %}
+
+    {% endblock modal_content %}
+
     {% include 'web/partials/header.html' %}
 
     <!-- tp-offcanvus-area-start -->
@@ -196,7 +200,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'web/assets/js/vendor/jquery.js' %}"></script>
     <script src="{% static 'web/assets/js/ajax.js' %}"></script>
-    {% comment %} <script src="{% static 'web/assets/js/custom-ajax.js' %}"></script> {% endcomment %}
     <script src="{% static 'web/assets/js/bootstrap-bundle.js' %}"></script>
     <script src="{% static 'web/assets/js/swiper-bundle.js' %}"></script>
     <script src="{% static 'web/assets/js/plugin.js' %}"></script>
@@ -224,6 +227,10 @@
     <script type="module" src="{% static 'web/assets/js/skew-slider/index.js' %}"></script>
     <script type="module" src="{% static 'web/assets/js/img-revel/index.js' %}"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    {% block javascript %}
+
+    {% endblock %}
 
 
     <!-- JS here -->

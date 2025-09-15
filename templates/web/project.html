@@ -8,8 +8,8 @@
             <div class="design-project-title-wrap p-relative mb-140">
                 <div class="tp-portfolio-metro-shape">
                     <span><svg xmlns="http://www.w3.org/2000/svg" width="732" height="9" viewBox="0 0 732 9" fill="none">
-                            <path d="M728 7.96512L731.5 4.48256L728 1M1 4H731V5H1V4Z" stroke="#000" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg> Know More</span>
+                        <path d="M728 7.96512L731.5 4.48256L728 1M1 4H731V5H1V4Z" stroke="#000" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg> Know More</span>
                 </div>
                 <div class="row align-items-end">
                     <div class="col-xl-9 col-lg-9 col-md-9">
@@ -23,21 +23,18 @@
                     <div class="col-xl-3 col-lg-3 col-md-3">
                         <div class="tp-portfolio-metro-social text-md-end pb-50">
                             <div>
-                                <a href="#">Linkedin</a>
+                                <a href="{% url 'web:projects' %}">All</a>
                             </div>
+                            {% for project_category in project_categories %}
                             <div>
-                                <a href="#">Instagram</a>
+                                <a href="{% url 'web:projects' %}?category={{project_category.name}}">{{project_category.name}}</a>
                             </div>
-                            <div>
-                                <a href="#">Dribbble</a>
-                            </div>
-                            <div>
-                                <a href="#">Behance</a>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
+
             <div id="top" class="design-project-item-wrap">
                 {% for project in projects %}
                 <div class="design-project-item mb-120">

@@ -58,3 +58,11 @@ class CareerAdmin(admin.ModelAdmin):
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ("name",)
+
+@admin.register(CareerEnquiry)
+class CareerEnquiryAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "phone", "career")
+
+@admin.register(ServiceEnquiry)
+class ServiceEnquiryAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "phone", "service")

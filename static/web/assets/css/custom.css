@@ -4,13 +4,7 @@
 .tp-copyright-left {
     padding-left: 380px !important;
 }
-.tp-copyright-big-text{
-    font-size: 160px !important;
-    letter-spacing: 0px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .tp-blog-masonry-item-user-thumb img {
     border-radius: 50%;
     height: 40px;
@@ -45,6 +39,13 @@
     }
     .pp-service-details-overview-list ul li{
         margin-right: 50px !important;
+    }
+    .tp-copyright-big-text{
+        font-size: 160px !important;
+        letter-spacing: 0px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 .pp-service-details-overview-heading{
@@ -118,4 +119,58 @@
     width: 465px !important;
     object-fit: cover !important;
     object-position: center !important
+}
+.tp-career-enquiry-modal .modal-dialog{
+    width: 800px !important;
+}
+.tp-career-enquiry-modal .modal-header .btn-close{
+    padding: 2px;
+    height: 35px;
+    width: 35px;
+}
+.upload-box {
+    background: #f9fafb;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    min-height: 140px;
+    transition: all 0.25s ease;
+}
+.upload-box:hover {
+    background: #eef2ff;
+    border-color: #4f46e5;
+}
+.cursor-pointer { cursor: pointer; }
+
+.form-label { font-size: .95rem; color: #374151; }
+
+.tp-career-details-sidebar-btn button {
+    width: auto;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 12px 18px;
+    border-radius: 26px;
+    display: inline-block;
+    letter-spacing: -0.2px;
+    background: #FF5722;
+    color: var(--tp-common-white);
+}
+
+.tp-career-details-sidebar-btn:hover button{
+    background-color: #111013;
+    color: var(--tp-common-white);
+}
+
+.tp-career-enquiry-modal .modal-content{
+    padding: 20px;
+}
+
+.tp-service-details-sidebar form input{
+    background: rgb(255 255 255) !important;
+    border: 1px solid rgb(217 217 217) !important;
+}
+
+.tp-footer-widget-menu ul li.active a{
+    color: var(--tp-common-white);
+    background-color: var(--tp-common-red-3);
 }
