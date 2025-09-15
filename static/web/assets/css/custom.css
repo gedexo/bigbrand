@@ -47,6 +47,12 @@
         justify-content: center;
         align-items: center;
     }
+    .tp-service-item .tp-service-thumb img{
+        height: 580px !important;
+        width: 465px !important;
+        object-fit: cover !important;
+        object-position: center !important
+    }
 }
 .pp-service-details-overview-heading{
     margin-bottom: 30px !important;
@@ -114,12 +120,7 @@
 .tp-service-content .tp-section-title{
     margin-bottom: 25px !important;
 }
-.tp-service-item .tp-service-thumb img{
-    height: 580px !important;
-    width: 465px !important;
-    object-fit: cover !important;
-    object-position: center !important
-}
+
 .tp-career-enquiry-modal .modal-dialog{
     width: 800px !important;
 }
@@ -173,4 +174,31 @@
 .tp-footer-widget-menu ul li.active a{
     color: var(--tp-common-white);
     background-color: var(--tp-common-red-3);
+}
+
+@media (max-width: 767px) {
+    .des-testimonial-item-inner {
+        height: 200px;
+        min-width: 100%;
+    }
+}
+.des-testimonial-moving-wrap {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.testimonial-slider {
+  display: flex;
+  gap: 20px;
+}
+
+.des-testimonial-item-inner {
+  flex: 0 0 auto;
+  width: 390px;
+}
+
+@media (max-width: 991px) {
+  .des-testimonial-item-inner { width: 100%; }
 }
