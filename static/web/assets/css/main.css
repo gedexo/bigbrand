@@ -326,6 +326,7 @@ body {
   font-weight: normal;
   color: var(--tp-text-body);
   font-family: var(--tp-ff-body);
+  letter-spacing: normal;
 }
 
 img {
