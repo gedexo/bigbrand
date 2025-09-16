@@ -86,6 +86,7 @@
     .ar-about-us-4-hero-ptb {
         padding-top: 40px !important;
     }
+    
 
     
 }
@@ -317,9 +318,24 @@
     .tp-pd-2-title {
         font-size: 44px !important;
     }
-
-
-
+    .creative-service-link{
+        margin-top: 0px;
+    }
+    .pp-service-details-overview-ptb{
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+    .pp-service-details-top{
+        padding-bottom: 10px !important;
+    }
+    .ar-banner-wrap img {
+        margin-top: -20px;
+        height: 260px !important;
+        object-fit: cover !important;
+    }
+    body.tp-magic-cursor #magic-cursor {
+        display: none !important;
+    }
 
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
@@ -372,4 +388,24 @@
         right: 50% !important;
         width: 40px !important;
     }
+    .pp-service-details-title {
+        line-height: 0.9 !important;
+    }
+    .pp-service-details-ptb {
+        padding-bottom: 0px !important;
+    }
+    .pp-service-details-overview-ptb{
+        padding-top: 60px !important;
+    }
+    .tp-footer-area{
+        padding-top: 60px !important;
+    }
+    body.tp-magic-cursor #magic-cursor {
+        display: none !important;
+    }
+
+}
+.tp-portfolio-metro-social a.active, .tp-portfolio-metro-social a:hover{
+    background-color: var(--tp-common-red-3);
+    color: white;
 }

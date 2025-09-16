@@ -23,12 +23,18 @@
                     <div class="col-xl-3 col-lg-3 col-md-3">
                         <div class="tp-portfolio-metro-social text-md-end pb-50">
                             <div>
-                                <a href="{% url 'web:projects' %}">All</a>
+                                <a href="{% url 'web:projects' %}"
+                                class="{% if not request.GET.category %}active{% endif %}">
+                                    All
+                                </a>
                             </div>
                             {% for project_category in project_categories %}
-                            <div>
-                                <a href="{% url 'web:projects' %}?category={{project_category.name}}">{{project_category.name}}</a>
-                            </div>
+                                <div>
+                                    <a href="{% url 'web:projects' %}?category={{ project_category.name }}"
+                                    class="{% if request.GET.category == project_category.name %}active{% endif %}">
+                                        {{ project_category.name }}
+                                    </a>
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
