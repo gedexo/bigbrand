@@ -355,6 +355,13 @@
     .tp-portfolio-inner-box, .tp-portfolio-inner-ptb {
         padding-bottom: 0px !important  ;
     }
+    .client-logo-section .client-logo-wrapper .client-logo-item{
+        max-width: 180px !important;
+    }
+    .client-logo-section .client-logo-wrapper .client-logo-item img {
+        height: 80px !important;
+        width: 80px !important;
+    }
 
 
 }
