@@ -57,7 +57,7 @@
 
 
     <!-- benefit area start -->
-    <section class="tp-benefit-ptb pt-140 pb-160">
+    <section class="tp-benefit-ptb pt-140 pb-60">
         <div class="container container-1230">
             <div class="row">
                 <div class="col-lg-12">
@@ -177,13 +177,13 @@
 
     {% if galleries %}
     <!-- career slider area start -->
-    <div class="tp-career-slider-ptb pb-180">
+    <div class="tp-career-slider-ptb pb-50 tp-career-image-slider">
         <div class="tp-career-slider-wrapper">
             <div class="tp-career-slider-active swiper-container">
                 <div class="swiper-wrapper align-items-center slide-transtion">
                     {% for gallery in galleries %}
                     <div class="swiper-slide">
-                        <div class="tp-career-slider-thumb">
+                        <div class="tp-career-slider-thumb tp-career-image-slider-thumb">
                             <img src="{{gallery.image.url}}" alt="{{gallery.name}}">
                         </div>
                     </div>
@@ -197,7 +197,7 @@
 
 
     <!-- career opening area start -->
-    <section class="tp-career-opening-ptb pb-100">
+    <section class="tp-career-opening-ptb pb-50">
         <div class="container container-1230">
             <div class="row">
                 <div class="col-lg-12">

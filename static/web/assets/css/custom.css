@@ -66,7 +66,7 @@
         padding-top: 25px !important;
         padding-bottom: 30px !important;
     }
-    .tp-section-title.fs-140, .tp-career-title {
+    .tp-section-title.fs-140, .tp-career-title, .tp-blog-title.fs-100 {
         font-size: 80px !important;
     }
     .ar-about-us-4-shape {
@@ -86,9 +86,13 @@
     .ar-about-us-4-hero-ptb {
         padding-top: 40px !important;
     }
-    
-
-    
+    .tp-footer-widget-title {
+        font-size: 60px !important;
+    }
+    .tp-section-title-dirtyline {
+        font-size: 100px !important;
+    }
+   
 }
 .pp-service-details-overview-heading{
     margin-bottom: 30px !important;
@@ -226,11 +230,13 @@
 .testimonial-slider {
   display: flex;
   gap: 20px;
+  will-change: transform;
 }
 
 .des-testimonial-item-inner {
   flex: 0 0 auto;
   width: 390px;
+  scroll-snap-align: start;
 }
 
 @media (max-width: 991px) {
@@ -336,6 +342,17 @@
     body.tp-magic-cursor #magic-cursor {
         display: none !important;
     }
+    .tp-benefit-heading {
+        margin-bottom: 10px !important;
+    }
+    .tp-benefit-ptb {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+    .tp-career-slider-ptb {
+        padding-bottom: 50px !important;
+    }
+
 
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
@@ -345,10 +362,10 @@
     }
 }
 .tp-header-inner-style .tp-header-menu > nav > ul > li:hover > a, .tp-header-dropdown nav ul li:hover a{
-    color: var(--tp-common-red-3);
+    color: var(--tp-common-red-3) !important;
 }
 .tp-header-inner-style .tp-header-menu > nav > ul > li.active > a, .tp-header-dropdown nav ul li.active a{
-    color: var(--tp-common-red-3);
+    color: var(--tp-common-red-3) !important;
 }
 #preloader {
     position: fixed;
@@ -408,4 +425,31 @@
 .tp-portfolio-metro-social a.active, .tp-portfolio-metro-social a:hover{
     background-color: var(--tp-common-red-3);
     color: white;
+}
+.tp-portfolio-inner-thumb {
+    overflow: hidden;
+    margin-bottom: 15px !important;
+}
+.bigbrand-light .creative-brand-item img {
+    filter: unset !important;
+}
+.client-logo-section .client-logo-wrapper .client-logo-item{
+    background: #f3f3f3;
+    height: 110px;
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+.client-logo-section .client-logo-wrapper .client-logo-item img{
+    height: 90px !important;
+    width: 90px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+.tp-career-image-slider .tp-career-image-slider-thumb img{
+    height: 300px !important;
+    object-fit: cover !important;
+    object-position: center !important;
 }

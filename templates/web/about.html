@@ -642,21 +642,6 @@
                         </div>
                     </div>
                     {% endfor %}
-                    {% for testimonial in testimonials %}
-                    <!-- duplicate for infinite scroll -->
-                    <div class="des-testimonial-item-inner card p-3">
-                        <div class="testimonial-content mb-3">
-                        <p class="mb-0">{{ testimonial.content }}</p>
-                        </div>
-                        <div class="testimonial-item-head d-flex align-items-center gap-3">
-                        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="rounded-circle" style="width:50px; height:50px; object-fit:cover;">
-                        <div>
-                            <h6 class="mb-0">{{ testimonial.name }}</h6>
-                            <small class="text-muted">{{ testimonial.position }}</small>
-                        </div>
-                        </div>
-                    </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -742,34 +727,66 @@
     </section>
 
 {% endblock %}
-
 {% block javascript %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  function startSlider(containerId, speed = 1, direction = "left") {
+  function startSlider(containerId, speed = 0.5) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
     const slider = container.querySelector(".testimonial-slider");
-    let scrollPos = 0;
+    let isDragging = false;
+    let startX, scrollX;
+    let pos = 0;
+
+    // ✅ Duplicate items for seamless infinite loop
+    slider.innerHTML += slider.innerHTML;
 
     function animate() {
-      if (direction === "left") {
-        scrollPos += speed;
-        if (scrollPos >= slider.scrollWidth / 2) scrollPos = 0;
-        slider.style.transform = `translateX(-${scrollPos}px)`;
-      } else {
-        scrollPos -= speed;
-        if (scrollPos <= -slider.scrollWidth / 2) scrollPos = 0;
-        slider.style.transform = `translateX(${scrollPos}px)`;
+      if (!isDragging) {
+        pos -= speed; // always move left
+        if (Math.abs(pos) >= slider.scrollWidth / 2) {
+          pos = 0; // reset seamlessly
+        }
+        slider.style.transform = `translateX(${pos}px)`;
       }
       requestAnimationFrame(animate);
     }
 
+    // ✅ Drag / Swipe Support
+    function dragStart(e) {
+      isDragging = true;
+      startX = e.pageX || e.touches[0].pageX;
+      scrollX = pos;
+    }
+    function dragMove(e) {
+      if (!isDragging) return;
+      let x = e.pageX || e.touches[0].pageX;
+      let walk = x - startX;
+      pos = scrollX + walk;
+      slider.style.transform = `translateX(${pos}px)`;
+    }
+    function dragEnd() {
+      isDragging = false;
+    }
+
+    slider.addEventListener("mousedown", dragStart);
+    slider.addEventListener("mousemove", dragMove);
+    slider.addEventListener("mouseup", dragEnd);
+    slider.addEventListener("mouseleave", dragEnd);
+
+    slider.addEventListener("touchstart", dragStart);
+    slider.addEventListener("touchmove", dragMove);
+    slider.addEventListener("touchend", dragEnd);
+
     animate();
   }
 
-  startSlider("testimonial-top", 1, "left");    // top slider moves left
-  startSlider("testimonial-bottom", 1, "right"); // bottom slider moves right
+  // Call for top slider
+  startSlider("testimonial-top", 0.5);
+
+  // If you want another bottom slider going opposite, call separately:
+  // startSlider("testimonial-bottom", 0.5, "right");
 });
 </script>
 {% endblock %}

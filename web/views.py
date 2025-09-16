@@ -244,6 +244,15 @@ def career_detail(request, slug):
     return render(request, "web/career-detail.html", context)
 
 
+def gallery(request):
+    galleries = Gallery.objects.all()
+    context = {
+        "is_gallery": True,
+        "galleries": galleries
+    }
+    return render(request, "web/gallery.html", context)
+    
+
 def contact(request):
     form = ContactForm(request.POST or None)
 

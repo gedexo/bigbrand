@@ -85,7 +85,7 @@
     <!-- project area end -->
 
     <!-- brand area start -->
-    <div class="des-brand-area pb-50">
+    {% comment %} <div class="des-brand-area pb-50">
         <div class="container container-1830">
             <div class="row">
                 <div class="col-xl-6">
@@ -119,6 +119,40 @@
                         <img src="{{client.image.url}}" alt="">
                     </div>
                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    <!-- brand area end -->
+
+    <!-- brand area start -->
+    <div class="creative-brand-area pb-80 client-logo-section fix">
+        <div class="container container-1830">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="des-brand-title-box tp-portfolio-metro-sub mb-40">
+                        <h3 class="tp-section-subtitle-clash mb-0">
+                            Our clients
+                            <i>
+                                <svg width="102" height="9" viewBox="0 0 102 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M98 8L101.5 4.5L98 1M1 4H101V5H1V4Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </i>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="creative-brand-wrapper client-logo-wrapper">
+            <div class="swiper-container creative-brand-active">
+                <div class="swiper-wrapper slider-transtion">
+                    {% for client in clients %}
+                    <div class="swiper-slide">
+                        <div class="creative-brand-item client-logo-item">
+                            <img src="{{client.image.url}}" alt="{{client.name}}">
+                        </div>
+                    </div>
+                    {% endfor %}                    
                 </div>
             </div>
         </div>
