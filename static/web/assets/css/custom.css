@@ -352,6 +352,9 @@
     .tp-career-slider-ptb {
         padding-bottom: 50px !important;
     }
+    .tp-portfolio-inner-box, .tp-portfolio-inner-ptb {
+        padding-bottom: 0px !important  ;
+    }
 
 
 }
