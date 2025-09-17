@@ -92,6 +92,36 @@
     .tp-section-title-dirtyline {
         font-size: 100px !important;
     }
+    .tp-blog-masonry-thumb img{
+        width: 100% !important;
+        height: 250px !important;
+    }
+    .testimonal-wrapper .testimonal-slide .tp-hero-avater img{
+        height: 51px !important;
+        width: 51px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+    }
+    .tp-hero-more-info {
+        width: 240px !important;
+        min-height: 300px !important; 
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .tp-career-opening-ptb .tp-career-opening-item .tp-career-table-header{
+        display: flex !important;
+    }
+    .other-blog-sidebar-wrapper .other-blog-sidebar-widget img{
+        height: 140px !important;
+        width: 140px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    .blog-detail-wrapper .blog-details-img img{
+        height: 450px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
    
 }
 .pp-service-details-overview-heading{
@@ -365,6 +395,27 @@
     .crp-hero-funfact-wrap{
         margin-bottom: 20px !important;
     }
+    .tp-blog-masonry-thumb img{
+        width: 100% !important;
+        height: 200px !important;
+    }
+    .tp-offcanvas-menu{
+        margin-bottom: 40px !important;
+    }
+    .tp-offcanvas-contact {
+        margin-bottom: 45px !important;
+    }
+    .other-blog-sidebar-wrapper .other-blog-sidebar-widget img{
+        height: 100px !important;
+        width: 100px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    .blog-detail-wrapper .blog-details-img img{
+        height: 350px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
 
 
 }
@@ -465,4 +516,10 @@
     height: 300px !important;
     object-fit: cover !important;
     object-position: center !important;
+}
+.swiper .swiper-slide {
+  width: 100% !important;
+}
+.blog-detail-wrapper .postbox-details-text ul{
+    padding-left: 30px !important;
 }

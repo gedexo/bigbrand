@@ -127,9 +127,9 @@ def project(request):
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
     
-    # Get next and previous projects
-    next_project = Project.objects.filter(id__gt=project.id).order_by("id").first()
-    prev_project = Project.objects.filter(id__lt=project.id).order_by("-id").first()
+    # Adjust according to Meta ordering = ['-id']
+    next_project = Project.objects.filter(id__lt=project.id).order_by('-id').first()
+    prev_project = Project.objects.filter(id__gt=project.id).order_by('id').first()
     
     context = {
         "is_project": True,

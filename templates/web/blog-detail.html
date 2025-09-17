@@ -37,7 +37,7 @@
         <div class="container container-1330">
             <div class="row">
                 <div class="col-xxl-8 col-xl-8 col-lg-8">
-                    <div class="postbox-wrapper mb-115">
+                    <div class="postbox-wrapper blog-detail-wrapper mb-115">
                         <article class="postbox-details-item item-border mb-20">
                             <div class="postbox-details-info-wrap">
                                
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </article>
-                        <div class="postbox-details-thumb mb-45">
+                        <div class="postbox-details-thumb blog-details-img mb-45">
                             <img class="w-100" src="{{blog.image.url}}" alt="{{blog.title}}">
                         </div>
                         <div class="postbox-details-text mb-45">
@@ -80,8 +80,8 @@
                     </div>
                 </div>
                 <div class="col-xxl-4 col-xl-4 col-lg-4">
-                    <div class="sidebar-wrapper">
-                        <div class="sidebar-widget mb-45">
+                    <div class="sidebar-wrapper other-blog-sidebar-wrapper">
+                        <div class="sidebar-widget mb-45 ">
                             <div class="sidebar-search">
                                 <form method="get" action="">
                                     <div class="sidebar-search-input">
@@ -97,7 +97,7 @@
                         </div>
                         
                         
-                        <div class="sidebar-widget mb-45">
+                        <div class="sidebar-widget mb-45 other-blog-sidebar-widget">
                             <h3 class="sidebar-widget-title">
                                 {% if search_query %}Search Results for "{{ search_query }}"{% else %}Latest Blogs{% endif %}
                             </h3>

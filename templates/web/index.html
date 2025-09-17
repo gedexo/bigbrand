@@ -17,7 +17,10 @@
             <div class="col-xl-3">
                 <div class="tp-hero-content-wrap d-flex flex-xl-column justify-content-between pb-20">
                     <div class="tp-hero-info d-flex align-items-start justify-content-between tp_text_anim">
-                        <p>Hey! is the ultimate bigbrand <br> Agency template for professionals <br> in the design industry.</p>
+                        <p>
+                            Bigbrand is a digital marketing<br>
+                            agency that helps brands grow through innovative strategies.
+                        </p>
                         <span>
                             <a href="{% url 'web:contact' %}">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,19 +32,28 @@
                             </a>
                         </span>
                     </div>
-                    <div class="tp-hero-more-info-wrap d-inline-flex justify-content-end tp_fade_anim" data-delay="1.5">
-                        <div class="tp-hero-more-info p-relative" data-background="{% static 'web/assets/img/home-01/hero/hero-svg-1.svg' %}">
-                            <span class="tp-hero-line d-none d-sm-block"></span>
-                            <div class="tp-hero-avater d-flex align-items-center justify-content-between">
-                                <img src="{% static 'web/assets/img/home-01/hero/hero-avater.png' %}" alt="">
-                                <span>Juan Mauel</span>
+                    <div class="swiper tp-hero-more-info-wrap tp_fade_anim testimonal-wrapper" data-delay="1.5">
+                        <div class="swiper-wrapper">
+
+                            {% for testimonial in testimonials %}
+                            <div class="swiper-slide testimonal-slide">
+                                 <div class="tp-hero-more-info p-relative" data-background="{% static 'web/assets/img/home-01/hero/hero-svg-1.svg' %}">
+                                    <span class="tp-hero-line d-none d-sm-block"></span>
+                                    <div class="tp-hero-avater d-flex align-items-center justify-content-between">
+                                        <img src="{{ testimonial.image.url }}" alt="{{testimonial.name}}">
+                                        <span>{{ testimonial.name }}</span>
+                                    </div>
+                                    <p>“{{ testimonial.content|truncatechars:80 }}”</p>
+                                    <div class="tp-hero-link text-end">
+                                        <a href="{% url 'web:about' %}">More</a>
+                                    </div>
+                                </div>
                             </div>
-                            <p>“The depth of exploration and quality of the work was great”</p>
-                            <div class="tp-hero-link text-end">
-                                <a href="{% url 'web:about' %}">More</a>
-                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -970,4 +982,21 @@
 </div> {% endcomment %}
 <!-- award area end -->
 
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const swiper = new Swiper('.swiper', {
+    loop: true,               // Infinite loop
+    autoplay: {
+      delay: 5000,            // Auto-slide every 5 seconds
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,         // Show 1 slide at a time
+    spaceBetween: 0,          // No gap needed
+    effect: 'slide',          // Keep slide effect
+  });
+});
+</script>
 {% endblock %}
