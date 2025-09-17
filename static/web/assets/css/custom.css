@@ -46,12 +46,7 @@
         object-fit: cover !important;
         object-position: center !important
     }
-    .tp-copyright-left {
-        padding-left: 380px !important;
-    }
-    .tp-copyright-right {
-        padding-right: 155px !important;
-    }
+    
     .ar-about-us-4-text-title{
         font-size: 60px !important;
         letter-spacing: 0;
@@ -429,7 +424,6 @@
         background-repeat: no-repeat;
     }
 
-
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
     .tp-about-area {
@@ -458,12 +452,6 @@
         letter-spacing: -2px !important;
         display: flex !important;
         justify-content: center !important;
-    }
-    .tp-copyright-left {
-        padding-left: 200px !important;
-    }
-    .tp-copyright-right {
-        padding-right: 55px !important;
     }
     .ar-about-us-4-shape {
         top: 34% !important;
@@ -534,4 +522,10 @@
 }
 .blog-detail-wrapper .postbox-details-text ul{
     padding-left: 30px !important;
+}
+.tp-copyright-left {
+    padding-left: 0px !important;
+}
+.tp-copyright-right {
+    padding-right: 0px !important;
 }

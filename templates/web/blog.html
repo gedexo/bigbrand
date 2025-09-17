@@ -122,3 +122,35 @@
     <!-- blog masonry area end -->
 </div>
 {% endblock %}
+
+{% block javascript %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function setEqualHeight() {
+      const cards = document.querySelectorAll(".tp-blog-masonry-item");
+      let maxHeight = 0;
+
+      // Reset height before recalculating
+      cards.forEach(card => card.style.height = "auto");
+
+      // Find the tallest card
+      cards.forEach(card => {
+        if (card.offsetHeight > maxHeight) {
+          maxHeight = card.offsetHeight;
+        }
+      });
+
+      // Apply tallest height to all
+      cards.forEach(card => {
+        card.style.height = maxHeight + "px";
+      });
+    }
+
+    // Run on load
+    setEqualHeight();
+
+    // Run again on window resize (responsive fix)
+    window.addEventListener("resize", setEqualHeight);
+  });
+</script>
+{% endblock %}
