@@ -416,6 +416,18 @@
         object-fit: cover !important;
         object-position: center !important;
     }
+    .testimonal-wrapper .testimonal-slide .tp-hero-avater img{
+        height: 51px !important;
+        width: 51px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+    }
+    .tp-hero-more-info {
+        width: 250px !important;
+        min-height: 70px !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
 
 }

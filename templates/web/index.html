@@ -999,4 +999,41 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".testimonal-slide .tp-hero-more-info");
+    let maxHeight = 0;
+
+    // Find the tallest card
+    slides.forEach(slide => {
+      slide.style.height = "auto"; // reset before calculating
+      if (slide.offsetHeight > maxHeight) {
+        maxHeight = slide.offsetHeight;
+      }
+    });
+
+    // Apply the tallest height to all cards
+    slides.forEach(slide => {
+      slide.style.height = maxHeight + "px";
+    });
+  });
+
+  // Optional: re-check on window resize
+  window.addEventListener("resize", function () {
+    const slides = document.querySelectorAll(".testimonal-slide .tp-hero-more-info");
+    let maxHeight = 0;
+
+    slides.forEach(slide => {
+      slide.style.height = "auto";
+      if (slide.offsetHeight > maxHeight) {
+        maxHeight = slide.offsetHeight;
+      }
+    });
+
+    slides.forEach(slide => {
+      slide.style.height = maxHeight + "px";
+    });
+  });
+</script>
 {% endblock %}
