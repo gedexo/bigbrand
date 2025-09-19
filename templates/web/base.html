@@ -6,8 +6,38 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>bigbrand - Digital Agency & Creative Portfolio HTML Template</title>
-    <meta name="description" content="">
+    {% block meta %}
+        <!-- Primary Meta Tags -->
+        <title>{{meta.meta_title}}</title>
+        <meta name="keywords" content="{{meta.meta_keywords}}">
+        <meta name="title" content="{{meta.meta_title}}" />
+        <meta name="description" content="{{meta.meta_descrption}}" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        {% if meta.canonical_url %}
+        <meta property="og:url" content="{{meta.canonical_url}}" />
+        {% endif %}
+        <meta property="og:title" content="{{meta.meta_title}}" />
+        <meta property="og:description" content="{{meta.meta_descrption}}" />
+        {% if meta.image %}
+        <meta property="og:image" content="{{meta.image.url}}" />
+        {% endif %}
+
+        <!-- X (Twitter) -->
+        <meta property="twitter:card" content="summary_large_image" />
+        {% if meta.canonical_url %}
+        <meta property="twitter:url" content="{{meta.canonical_url}}" />
+        {% endif %}
+        <meta property="twitter:title" content="{{meta.meta_title}}" />
+        <meta property="twitter:description" content="{{meta.meta_descrption}}" />
+        {% if meta.image %}
+        <meta property="twitter:image" content="{{meta.image.url}}" />
+        {% endif %}
+        
+    {% endblock meta %}
+
+    <!-- Meta Tags Generated with https://metatags.io -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico in the root directory -->

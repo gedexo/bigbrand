@@ -1,5 +1,13 @@
 {% extends "web/base.html" %}
 {% load static %}
+
+{% block meta %}
+    <title>{{service.meta_title}}</title>
+    <meta name="keywords" content="{{service.meta_keywords}}">
+    <meta name="title" content="{{service.meta_title}}" />
+    <meta name="description" content="{{service.meta_description}}" />
+{% endblock meta %}
+
 {% block content %}
 <div class="bigbrand-light">
     <!-- about area start -->

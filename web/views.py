@@ -8,18 +8,20 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 
 from .forms import ContactForm, CareerEnquiryForm, ServiceEnquiryForm
-from .models import Blog, ProjectCategory, Project, ClientLogo, Service, FAQ, Testimonial, Career, Gallery, Team
+from .models import Blog, Meta, ProjectCategory, Project, ClientLogo, Service, FAQ, Testimonial, Career, Gallery, Team
 
 
 def index(request):
     service = Service.objects.all()
     projects = Project.objects.all()[:6]
     testimonials = Testimonial.objects.all()
+    meta = Meta.objects.filter(page='home').first()
     context = {
         "is_home": True,
         "services": service,
         "projects": projects,
-        "testimonials": testimonials
+        "testimonials": testimonials,
+        "meta":meta
     }
     return render(request, 'web/index.html', context)
 
@@ -34,7 +36,8 @@ def about(request):
         "services": services,
         "faqs": faqs,
         "testimonials": testimonials,
-        "teams": teams
+        "teams": teams,
+        "meta": Meta.objects.filter(page='about').first()
     }
     return render(request, 'web/about.html', context)
 
@@ -43,7 +46,8 @@ def service(request):
     services = Service.objects.all()
     context = {
         "is_service": True,
-        "services": services
+        "services": services,
+        "meta": Meta.objects.filter(page='service').first()
     }
     return render(request, 'web/service.html', context)
 
@@ -118,7 +122,8 @@ def project(request):
         "project_categories": project_categories,
         "projects": projects,
         "clients": clients,
-        "selected_category": category_name  # optional, useful for highlighting
+        "selected_category": category_name,
+        "meta": Meta.objects.filter(page='project').first()
     }
     
     return render(request, 'web/project.html', context)
@@ -149,7 +154,8 @@ def blog(request):
 
     context = {
         "is_blog": True,
-        "blogs": blogs
+        "blogs": blogs,
+        "blog": Meta.objects.filter(page='blog').first()
     }
     return render(request, "web/blog.html", context)
 
@@ -185,7 +191,8 @@ def career(request):
     context = {
         "is_career": True,
         "careers": Career.objects.all(),
-        "galleries": galleries
+        "galleries": galleries,
+        "career": Meta.objects.filter(page='career').first()
     }
     return render(request, "web/career.html", context)   
 
@@ -248,7 +255,8 @@ def gallery(request):
     galleries = Gallery.objects.all()
     context = {
         "is_gallery": True,
-        "galleries": galleries
+        "galleries": galleries,
+        "gallery": Meta.objects.filter(page='gallery').first()
     }
     return render(request, "web/gallery.html", context)
     
@@ -298,5 +306,6 @@ def contact(request):
         "is_contact": True,
         "form": form,
         "turnstile_site_key": settings.CLOUDFLARE_TURNSTILE_SITE_KEY,
+        "contact": Meta.objects.filter(page='contact').first()
     }
     return render(request, "web/contact.html", context)

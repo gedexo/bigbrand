@@ -21,6 +21,9 @@ class Contact(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=180)
     slug = models.SlugField(unique=True)
+    meta_title = models.CharField(max_length=180, blank=True, null=True)
+    meta_keywords = models.CharField(max_length=200, blank=True, null=True)
+    meta_description = models.CharField(max_length=180, blank=True, null=True)
     image = models.ImageField(upload_to='blog_images')
     date = models.DateField()
     category = models.CharField(max_length=100)
@@ -55,6 +58,9 @@ class Project(models.Model):
     category = models.ForeignKey("web.ProjectCategory", on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+    meta_title = models.CharField(max_length=180, blank=True, null=True)
+    meta_keywords = models.CharField(max_length=200, blank=True, null=True)
+    meta_description = models.CharField(max_length=180, blank=True, null=True)
     image = models.ImageField(upload_to='project_images')
     client = models.CharField(max_length=100, null=True)
     timescale = models.CharField(max_length=100, null=True)
@@ -100,6 +106,9 @@ class Service(models.Model):
     slug = models.SlugField(unique=True)
     title = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to='service_images')
+    meta_title = models.CharField(max_length=180, blank=True, null=True)
+    meta_keywords = models.CharField(max_length=200, blank=True, null=True)
+    meta_description = models.CharField(max_length=180, blank=True, null=True)
     description = HTMLField()
 
     def __str__(self):
@@ -197,6 +206,9 @@ class Team(models.Model):
 class Career(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+    meta_title = models.CharField(max_length=180, blank=True, null=True)
+    meta_keywords = models.CharField(max_length=200, blank=True, null=True)
+    meta_description = models.CharField(max_length=180, blank=True, null=True)
     job_category = models.CharField(max_length=100, null=True)
     experience = models.CharField(max_length=100)
     job_type = models.CharField(max_length=100)
@@ -243,3 +255,30 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = 'Gallery'
         verbose_name_plural = 'Galleries'
+
+    
+class Meta(models.Model):
+    PAGES = (
+        ('home', 'Home'),
+        ('about', 'About'),
+        ('service', 'Service'),
+        ('project', 'Project'),
+        ('blog', 'Blog'),
+        ('career', 'Career'),
+        ('gallery', 'Gallery'),
+        ('contact', 'Contact'),
+    )
+    page = models.CharField(max_length=180, choices=PAGES)
+    meta_title = models.CharField(max_length=180)
+    meta_keywords = models.CharField(max_length=200)
+    meta_description = models.CharField(max_length=180)
+    canonical_url = models.URLField(blank=True, null=True)
+    image = models.ImageField(upload_to="meta/", blank=True, null=True)
+    
+    def __str__(self):
+        return self.meta_title
+    
+    class Meta:
+        ordering = ["-id"]
+        verbose_name = 'Meta'
+        verbose_name_plural = 'Metas'

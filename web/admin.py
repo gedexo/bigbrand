@@ -66,3 +66,7 @@ class CareerEnquiryAdmin(admin.ModelAdmin):
 @admin.register(ServiceEnquiry)
 class ServiceEnquiryAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "phone", "service")
+
+@admin.register(Meta)
+class MetaAdmin(admin.ModelAdmin):
+    list_display = ("page", "meta_title",)
